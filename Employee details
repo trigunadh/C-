@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class employee
+{
+public:
+    int empid;
+    string name;
+    double basicsalary;
+
+    employee(int a, string b, double c)
+    {
+        empid = a;
+        name = b;
+        basicsalary = c;
+    }
+
+    void getemployeesetails()
+    {
+        cout << "ID is: " << empid << endl;
+        cout << "Name: " << name << endl;
+        cout << "Basic salary: " << basicsalary << endl;
+    }
+};
+
+class manager : public employee
+{
+    double salary;
+
+public:
+    double allowance;
+
+    // Manager constructor must call employee constructor
+    manager(int a, string b, double c) : employee(a, b, c)
+    {
+    }
+
+    void getmanagerdetails()
+    {
+        cout << "Enter allowance: ";
+        cin >> allowance;
+    }
+
+    void calculatesalary()
+    {
+        salary = basicsalary + allowance;
+        cout << "Your total salary is: " << salary << endl;
+    }
+
+    void display()
+    {
+        getemployeesetails();  
+        cout << "Final salary: " << salary << endl;
+    }
+};
+
+int main()
+{
+    employee ep(455, "Penguin", 86667);
+    ep.getemployeesetails();
+
+    
+
+    manager manage(455, "penguin", 50000);
+    manage.getmanagerdetails();
+    manage.calculate_salary();
+    manage.display();
+
+    return 0;
+}
