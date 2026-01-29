@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+class AcademicRecord
+{
+piblic:
+    int rollNo;
+    float marks;
+    void getAcademicDetails()
+       {
+        cout << "Enter Roll Number: ";
+          cin >> rollNo;
+        cout << "Enter Academic Marks: ";
+        cin >> marks;
+       }
+
+    void showAcademicDetails()
+       {
+        cout << "Roll Number: " << rollNo << endl;
+           cout << "Academic Marks: " << marks << endl;
+          }
+};
+
+
+class SportsRecord
+{
+public:
+    string sportName;
+    float sportsScore;
+    void getSportsDetails()
+      {
+        cout << "Enter Sport Name: ";
+        cin >> sportName;
+           cout << "Enter Sports Score: ";
+        cin >> sportsScore;
+          } 
+
+    void showSportsDetails()
+    {
+        cout << "Sport Name: " << sportName << endl;
+        cout << "Sports Score: " << sportsScore << endl;
+    }
+};
+
+
+class Student : public AcademicRecord, public SportsRecord
+{
+    float overallScore;
+
+public:
+    void getStudentData()
+    {
+        getAcademicDetails();   
+        getSportsDetails();    
+    }
+
+    void calculatePerformance()
+    {
+        overallScore = marks + sportsScore;  
+    }
+
+    void displayStudentData()
+    {
+      
+        showAcademicDetails();
+        showSportsDetails();
+        cout << "Overall Performance Score: " << overallScore << endl;
+    }
+};
+
+int main()
+{
+    Student s;             
+    s.getStudentData();
+    s.calculatePerformance();
+    s.displayStudentData();
+
+    return 0;
+}
