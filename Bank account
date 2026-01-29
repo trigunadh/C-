@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+class bankaccount
+{
+private:
+    int balance;
+
+public:
+    bankaccount() {
+        balance = 1234;
+    }
+
+    void checkbalance() {
+        cout << "Your balance is: " << balance << endl;
+    }
+
+    friend class bankmanager;
+};
+
+class bankmanager
+{
+public:
+    int credit;
+    int debit;
+    char ch;
+
+    void change(bankaccount &acc)   // pass account object
+    {
+        cout << "Enter + to credit amount and - to withdraw amount: ";
+        cin >> ch;
+
+        if (ch == '+')
+        {
+            cout << "Enter the amount to be added: ";
+            cin >> credit;
+            acc.balance += credit;   // access through object
+        }
+        else
+        {
+            cout << "Enter the amount to be withdrawn: ";
+            cin >> debit;
+            acc.balance -= debit;
+        }
+    }
+};
+
+int main()
+{
+    bankaccount user;
+    bankmanager manager;
+
+    user.checkbalance();
+    manager.change(user);   // pass object
+    user.checkbalance();    // show updated balance
+
+    return 0;
+}
