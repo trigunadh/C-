@@ -2,14 +2,14 @@
 using namespace std;
 class AcademicRecord
 {
-piblic:
+  public:
     int rollNo;
     float marks;
     void getAcademicDetails()
        {
-        cout << "Enter Roll Number: ";
+        cout << "Enter Roll Number"<<endl;
           cin >> rollNo;
-        cout << "Enter Academic Marks: ";
+        cout << "Enter Academic Marks"<<endl;
         cin >> marks;
        }
 
