@@ -19,29 +19,29 @@ public:
 };
 
 class bankmanager
-{
-public:
+  {
+   public:
     int credit;
     int debit;
-    char ch;
+       char ch;
 
-    void change(bankaccount &acc)   // pass account object
+    void change(bankaccount &object)   // giving an object to access the balance in the friend class its just used for balance 
     {
         cout << "Enter + to credit amount and - to withdraw amount: ";
         cin >> ch;
 
-        if (ch == '+')
-        {
-            cout << "Enter the amount to be added: ";
-            cin >> credit;
-            acc.balance += credit;   // access through object
-        }
+           if (ch == '+')
+             {
+                cout << "Enter the amount to be added: ";
+                     cin >> credit;
+                  object.balance += credit;   // access the balance without the object balance cant be accessed
+             }
         else
-        {
+           {
             cout << "Enter the amount to be withdrawn: ";
             cin >> debit;
-            acc.balance -= debit;
-        }
+            object.balance -= debit;
+           }
     }
 };
 
@@ -51,8 +51,8 @@ int main()
     bankmanager manager;
 
     user.checkbalance();
-    manager.change(user);   // pass object
-    user.checkbalance();    // show updated balance
+    manager.change(user);
+    user.checkbalance();    
 
     return 0;
 }
