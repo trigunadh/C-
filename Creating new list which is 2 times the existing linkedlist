@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class LinkedList {
+public:
+    Node* head;
+    LinkedList() { head = nullptr; }
+
+    void insertAtEnd(int value) {
+        Node* newNode = new Node{value, nullptr};
+        if (!head) { head = newNode; return; }
+        Node* temp = head;
+        while (temp->next) temp = temp->next;
+        temp->next = newNode;
+    }
+
+    // Function to create and return a new doubled list
+    LinkedList createDoubledList() {
+        LinkedList newList;
+        Node* temp = head;
+        
+        while (temp != nullptr) {
+            newList.insertAtEnd(temp->data * 2); // Doubling the value
+            temp = temp->next;
+        }
+        return newList;
+    }
+
+    void display() {
+        Node* temp = head;
+        while (temp) {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        cout << "NULL" << endl;
+    }
+};
+
+int main() {
+    LinkedList list1;
+    list1.insertAtEnd(5);
+    list1.insertAtEnd(10);
+    list1.insertAtEnd(15);
+
+    cout << "Original List: ";
+    list1.display();
+
+    LinkedList list2 = list1.createDoubledList();
+    
+    cout << "New Doubled List: ";
+    list2.display();
+
+    return 0;
+}
+
