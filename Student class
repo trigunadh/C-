@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+class student {
+	private :
+	int sub1,sub2,sub3;
+	public:
+		float average(){
+		return (sub1+sub2+sub3)/3.0;	
+		}
+		float percentage(){
+			return (sub1+sub2+sub3)*100.0/300.0;
+		}
+		void ReadSubMarks(){
+			cout<<"enter Sub 1 marks:";
+			cin>>sub1;
+			cout<<"enter Sub 2 marks:";
+			cin>>sub2;
+			cout<<"enter Sub 3 marks:";
+			cin>>sub3;	
+		}
+		void DisplayDetails(){
+			cout<<"Student details:\n"<<sub1;
+			cout<<" "<<sub2<<" "<<sub3<<endl;
+			cout<<"AVG:"<<average();
+			cout<<"\nPercentage:"<<percentage()<<endl;
+			}
+
+
