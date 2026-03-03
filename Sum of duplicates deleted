@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+struct Node{
+	int data;
+	Node* next;
+};
+class linkedlist{
+	private:
+		Node* head;
+	public:
+		linkedlist(){
+			head=NULL;
+		}
+		void display(){
+			Node* temp=head;
+			while (temp!=NULL) {
+				cout<<temp->data<<"->";
+				temp=temp->next;
+			}
+			cout<<"END\n";
+		}
+		void insert(int value) {
+			Node* newNode=new Node();
+			newNode->data=value;
+			newNode->next=head;
+			head=newNode;
+		}
+		int deleteDuplicates(){
+			int sum=0;
+			Node* temp=head;
+			while(temp!=NULL && temp->next!=NULL){
+				if(temp->data==temp->next->data){
+					sum+=temp->data;
+					Node* del=temp->next;
+					temp->next=temp->next->next;
+					delete del;
+				}
+				else{
+					temp=temp->next;
+				}
+			}
+			return sum;
+		}
+};
+int main(){
+	linkedlist L1;
+	L1.insert(6);
+	L1.insert(6);
+	L1.insert(15);
+	L1.insert(64);
+	L1.insert(64);
+	L1.display();
+	int sum=L1.deleteDuplicates();
+	cout<<"Sum of duplicates: "<<sum<<endl;
+	L1.display();
+	return 0;
+}
+
